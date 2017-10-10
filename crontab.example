@@ -1,0 +1,3 @@
+# every night on 0:00 Server time, do a backup of the user directory.
+# Keep at most 30 backups.
+0 0 * * * /opt/backup/backupscript.sh -q -k 30 /home/user

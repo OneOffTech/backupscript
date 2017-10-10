@@ -1,0 +1,16 @@
+# default number of backups that are kept, per path per host.
+# will be overwritten by -k
+KEEPLAST=7
+
+# location of backup repository, hostname may be defined
+# in .ssh/config
+# at this location an initialized repository must exist
+# (this can be done with `restic init`)
+URI="sftp:backup:/users/share-1337/backup"
+
+# Password that is supplied to `restic init`
+BACKUP_PASSWORD="uzumymw"
+
+# location of the static restic executable
+RESTIC="/usr/local/bin/restic"
+
