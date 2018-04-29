@@ -9,7 +9,7 @@ the available backups.
  * Download the restic backend binary. This version of the scripts was
    tested with release 0.7.3, but should also be compatible with later
    releases. you can do this quickly by running
-   `curl https://github.com/restic/restic/releases/download/v0.7.3/restic_0.7.3_linux_amd64.bz2 | bunzip2 > /usr/local/bin/restic`
+   `curl -L https://github.com/restic/restic/releases/download/v0.7.3/restic_0.7.3_linux_amd64.bz2 | bzip2 -d > /usr/local/bin/restic`
    and make it executable with
    `chmod 755 /usr/local/bin/restic && chown root: /usr/local/bin/restic`.
  * set up the crontab, in order for the backup to run in regular intervals:
@@ -31,9 +31,12 @@ The following backends should work, but require additional configuration
   * Backblaze (with prefix `b2:`)
   * Openstack Swift (prefix container name with `swift:`)
 
-Now alter the content of the `config.sh` file to suit your needs.
+Copy the example configuration to the expected location:
+`cp backup.cfg.example ~/.backup.cfg`.
 
-Create a backup repository by running `source config.sh && restic init -r`.
+Now alter the content of the `~/.backup.cfg` file to suit your needs.
+
+Create a backup repository by running `source ~/.backup.cfg && restic init -r $URI`.
 This is only required once. If a repository already exists at the
 destination, it will not be overwritten. You need to delete it manually
 first.
@@ -75,3 +78,8 @@ backup with `umount /tmp/backup` once you no longer need it.
 You can now navigate the snapshots with normal file system utilities. A
 typical backup path looks like this:
 `/tmp/backup/snapshots/2017-10-04T03:00:41+02:00/gitlab/`.
+
+### License
+
+This piece of Free Software is available under the conditions of the
+[MIT License](LICENSE.txt).

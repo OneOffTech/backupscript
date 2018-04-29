@@ -15,7 +15,7 @@ usage() {
 }
 
 # read configuration variables
-source config.sh
+source ~/.backup.cfg
 
 BDIR=""
 EXCLUDE=""
@@ -75,4 +75,3 @@ $RESTIC --repo $URI $QUIET forget --keep-last $KEEPLAST --path "$BDIR"
 unset RESTIC_PASSWORD
 
 exit 0
-

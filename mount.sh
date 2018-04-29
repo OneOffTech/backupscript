@@ -5,6 +5,7 @@ source ~/.backup.cfg
 
 export RESTIC_PASSWORD=${BACKUP_PASSWORD}
 
-$RESTIC --repo $URI $QUIET prune "$@"
+# use the supplied parameters as a mountpoint
+$RESTIC --repo $URI mount ${@}
 
 unset RESTIC_PASSWORD
